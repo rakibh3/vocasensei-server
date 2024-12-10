@@ -3,6 +3,7 @@ import { catchAsync } from '@/utils/catchAsync'
 import { sendResponse } from '@/utils/sendResponse'
 import { VocabularyServices } from './vocabulary.service'
 
+// Create a new vocabulary
 const createVocabulary = catchAsync(async (req, res) => {
   const { ...payload } = req.body
 
@@ -16,9 +17,21 @@ const createVocabulary = catchAsync(async (req, res) => {
   })
 })
 
+// Get all vocabularies
+const getAllVocabularies = catchAsync(async (req, res) => {
+  const result = await VocabularyServices.getAllVocabulariesFromDatabase()
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Vocabularies fetched successfully',
+    data: result,
+  })
+})
+
 export const VocabularyControllers = {
   createVocabulary,
-  // getAllVocabularies,
+  getAllVocabularies,
   // getVocabulary,
   // updateVocabulary,
   // deleteVocabulary,

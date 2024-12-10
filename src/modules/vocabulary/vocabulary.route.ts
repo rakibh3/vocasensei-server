@@ -12,4 +12,7 @@ router.post(
   VocabularyControllers.createVocabulary,
 )
 
+// Route to get all vocabularies
+router.get('/vocabulary', VocabularyControllers.getAllVocabularies)
+
 export const VocabularyRoute = router
