@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { AuthRoute } from '@/modules/Auth/auth.route'
+import { AuthRoute } from '@/modules/auth/auth.route'
 import { UserRoute } from '@/modules/user/user.route'
 import { LessonRoute } from '@/modules/lesson/lesson.route'
 import { VocabularyRoute } from '@/modules/vocabulary/vocabulary.route'
