@@ -21,4 +21,7 @@ router.get('/vocabulary/:lessonNo', VocabularyControllers.getVocabulary)
 // Route to update a single vocabulary by id
 router.patch('/vocabulary/:id', VocabularyControllers.updateVocabulary)
 
+// Route to delete a single vocabulary by id
+router.delete('/vocabulary/:id', VocabularyControllers.deleteVocabulary)
+
 export const VocabularyRoute = router

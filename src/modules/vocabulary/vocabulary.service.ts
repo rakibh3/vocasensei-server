@@ -32,9 +32,16 @@ const updateVocabularyInDatabase = async (id: string, payload: TVocabulary) => {
   return vocabulary
 }
 
+// Delete a single vocabulary from the database
+const deleteVocabularyFromDatabase = async (id: string) => {
+  const result = await Vocabulary.findByIdAndDelete(id)
+  return result
+}
+
 export const VocabularyServices = {
   createVocabularyIntoDatabase,
   getAllVocabulariesFromDatabase,
   getVocabularyByLessonNoFromDatabase,
   updateVocabularyInDatabase,
+  deleteVocabularyFromDatabase,
 }

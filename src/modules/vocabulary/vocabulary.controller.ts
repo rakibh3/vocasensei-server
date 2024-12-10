@@ -62,10 +62,24 @@ const updateVocabulary = catchAsync(async (req, res) => {
   })
 })
 
+// Delete a single vocabulary by id
+const deleteVocabulary = catchAsync(async (req, res) => {
+  const { id } = req.params
+
+  const result = await VocabularyServices.deleteVocabularyFromDatabase(id)
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Vocabulary deleted successfully',
+    data: result,
+  })
+})
+
 export const VocabularyControllers = {
   createVocabulary,
   getAllVocabularies,
   getVocabulary,
   updateVocabulary,
-  // deleteVocabulary,
+  deleteVocabulary,
 }
