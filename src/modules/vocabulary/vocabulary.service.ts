@@ -23,8 +23,18 @@ const getVocabularyByLessonNoFromDatabase = async (lessonNo: string) => {
   return vocabulary
 }
 
+// Update a single vocabulary in the database
+const updateVocabularyInDatabase = async (id: string, payload: TVocabulary) => {
+  const vocabulary = await Vocabulary.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  })
+  return vocabulary
+}
+
 export const VocabularyServices = {
   createVocabularyIntoDatabase,
   getAllVocabulariesFromDatabase,
   getVocabularyByLessonNoFromDatabase,
+  updateVocabularyInDatabase,
 }

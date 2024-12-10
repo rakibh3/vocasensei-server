@@ -18,4 +18,7 @@ router.get('/vocabulary', VocabularyControllers.getAllVocabularies)
 // Route to get a single vocabulary by lesson number
 router.get('/vocabulary/:lessonNo', VocabularyControllers.getVocabulary)
 
+// Route to update a single vocabulary by id
+router.patch('/vocabulary/:id', VocabularyControllers.updateVocabulary)
+
 export const VocabularyRoute = router
