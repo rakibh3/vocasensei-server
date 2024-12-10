@@ -13,6 +13,12 @@ const getAllLessonsFromDatabase = async () => {
   return lessons
 }
 
+// Get a single lesson from the database
+const getLessonFromDatabase = async (lessonNumber: string) => {
+  const lesson = await Lesson.findOne({ lessonNumber })
+  return lesson
+}
+
 // Update an existing lesson in the database
 const updateLessonIntoDatabase = async (
   lessonId: string,
@@ -34,6 +40,7 @@ const deleteLessonFromDatabase = async (lessonId: string) => {
 export const LessonServices = {
   createLessonIntoDatabase,
   getAllLessonsFromDatabase,
+  getLessonFromDatabase,
   updateLessonIntoDatabase,
   deleteLessonFromDatabase,
 }

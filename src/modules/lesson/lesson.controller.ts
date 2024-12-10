@@ -28,6 +28,19 @@ const getAllLessons = catchAsync(async (req, res) => {
   })
 })
 
+// Get a single lesson
+const getLesson = catchAsync(async (req, res) => {
+  const { lessonNumber } = req.params
+  const result = await LessonServices.getLessonFromDatabase(lessonNumber)
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Lesson retrieved successfully',
+    data: result,
+  })
+})
+
 // Update an existing lesson
 const updateLesson = catchAsync(async (req, res) => {
   const { id } = req.params
@@ -58,6 +71,7 @@ const deleteLesson = catchAsync(async (req, res) => {
 export const LessonControllers = {
   createLesson,
   getAllLessons,
+  getLesson,
   updateLesson,
   deleteLesson,
 }
