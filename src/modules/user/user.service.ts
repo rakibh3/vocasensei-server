@@ -4,7 +4,7 @@ import { User } from './user.model'
 // Create a new user in the database
 const createUserIntoDatabase = async (payload: TUser) => {
   const result = await User.create(payload)
-  const responseData = await User.findById(result._id, { password: 0 })
+  const responseData = await User.findById({ _id: result._id }, { password: 0 })
   return responseData
 }
 
@@ -14,7 +14,18 @@ const getAllUsersFromDatabase = async () => {
   return result
 }
 
+// Update user role in the database
+const updateUserRoleInDatabase = async (id: string, role: string) => {
+  const result = await User.findByIdAndUpdate(
+    { _id: id },
+    { role },
+    { new: true, runValidators: true },
+  )
+  return result
+}
+
 export const UserServices = {
   createUserIntoDatabase,
   getAllUsersFromDatabase,
+  updateUserRoleInDatabase,
 }

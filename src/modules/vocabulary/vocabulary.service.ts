@@ -25,7 +25,7 @@ const getVocabularyByLessonNoFromDatabase = async (lessonNo: string) => {
 
 // Update a single vocabulary in the database
 const updateVocabularyInDatabase = async (id: string, payload: TVocabulary) => {
-  const vocabulary = await Vocabulary.findByIdAndUpdate(id, payload, {
+  const vocabulary = await Vocabulary.findByIdAndUpdate({ _id: id }, payload, {
     new: true,
     runValidators: true,
   })
@@ -34,7 +34,7 @@ const updateVocabularyInDatabase = async (id: string, payload: TVocabulary) => {
 
 // Delete a single vocabulary from the database
 const deleteVocabularyFromDatabase = async (id: string) => {
-  const result = await Vocabulary.findByIdAndDelete(id)
+  const result = await Vocabulary.findByIdAndDelete({ _id: id })
   return result
 }
 

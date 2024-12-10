@@ -24,7 +24,7 @@ const updateLessonIntoDatabase = async (
   lessonId: string,
   payload: Partial<TLesson>,
 ) => {
-  const lesson = await Lesson.findByIdAndUpdate(lessonId, payload, {
+  const lesson = await Lesson.findByIdAndUpdate({ _id: lessonId }, payload, {
     new: true,
     runValidators: true,
   })
@@ -33,7 +33,7 @@ const updateLessonIntoDatabase = async (
 
 // Delete an existing lesson from the database
 const deleteLessonFromDatabase = async (lessonId: string) => {
-  const result = await Lesson.findByIdAndDelete(lessonId)
+  const result = await Lesson.findByIdAndDelete({ _id: lessonId })
   return result
 }
 
