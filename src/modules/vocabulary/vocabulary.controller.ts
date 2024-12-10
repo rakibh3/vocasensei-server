@@ -29,10 +29,25 @@ const getAllVocabularies = catchAsync(async (req, res) => {
   })
 })
 
+// Get a single vocabulary by lesson number
+const getVocabulary = catchAsync(async (req, res) => {
+  const { lessonNo } = req.params
+
+  const result =
+    await VocabularyServices.getVocabularyByLessonNoFromDatabase(lessonNo)
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Vocabulary fetched successfully',
+    data: result,
+  })
+})
+
 export const VocabularyControllers = {
   createVocabulary,
   getAllVocabularies,
-  // getVocabulary,
+  getVocabulary,
   // updateVocabulary,
   // deleteVocabulary,
 }

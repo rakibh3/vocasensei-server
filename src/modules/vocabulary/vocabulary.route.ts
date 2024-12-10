@@ -15,4 +15,7 @@ router.post(
 // Route to get all vocabularies
 router.get('/vocabulary', VocabularyControllers.getAllVocabularies)
 
+// Route to get a single vocabulary by lesson number
+router.get('/vocabulary/:lessonNo', VocabularyControllers.getVocabulary)
+
 export const VocabularyRoute = router
