@@ -5,6 +5,8 @@ import httpStatus from 'http-status'
 import { ZodError } from 'zod'
 
 import { handleZodValidationError } from '@/error/zodError'
+import { handleCastValidationError } from './castError'
+import { handleDuplicateValidationError } from './duplicateError'
 
 export const globalErrorHandler: ErrorRequestHandler = (
   error,
@@ -20,6 +22,31 @@ export const globalErrorHandler: ErrorRequestHandler = (
       success: false,
       message: result.errorMessage,
       errorDetails: result.errorDetails,
+    })
+  }
+
+  // Handle Cast Validation Error
+  if (error?.name === 'CastError') {
+    const result = handleCastValidationError(error)
+    return res.status(result.statusCode).json({
+      success: false,
+      message: result.message,
+      errorMessage: result.errorMessage,
+      errorDetails: result.errorDetails,
+      stack: result.stack,
+    })
+  }
+
+  // Handle Duplicate Validation Error
+  if (error.code === 11000) {
+    const result = handleDuplicateValidationError(error)
+
+    return res.status(result.statusCode).json({
+      success: false,
+      message: result.message,
+      errorMessage: result.errorMessage,
+      errorDetails: result.errorDetails,
+      stack: result.stack,
     })
   }
 

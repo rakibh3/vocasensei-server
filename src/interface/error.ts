@@ -6,6 +6,7 @@ export type TErrorMessage = {
 
 export type TErrorResponse = {
   statusCode: number
+  message?: string
   errorMessage?: string
   errorDetails: string | any
   error?: any

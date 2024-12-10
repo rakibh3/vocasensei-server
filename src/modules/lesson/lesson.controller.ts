@@ -3,6 +3,7 @@ import { catchAsync } from '@/utils/catchAsync'
 import { sendResponse } from '@/utils/sendResponse'
 import { LessonServices } from './lesson.service'
 
+// Create a new lesson
 const createLesson = catchAsync(async (req, res) => {
   const { ...payload } = req.body
   const result = await LessonServices.createLessonIntoDatabase(payload)
@@ -15,6 +16,21 @@ const createLesson = catchAsync(async (req, res) => {
   })
 })
 
+// Update an existing lesson
+const updateLesson = catchAsync(async (req, res) => {
+  const { id } = req.params
+  const { ...payload } = req.body
+  const result = await LessonServices.updateLessonIntoDatabase(id, payload)
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Lesson updated successfully',
+    data: result,
+  })
+})
+
 export const LessonControllers = {
   createLesson,
+  updateLesson,
 }
