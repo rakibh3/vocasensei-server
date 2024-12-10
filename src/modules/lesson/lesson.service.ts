@@ -7,6 +7,12 @@ const createLessonIntoDatabase = async (payload: TLesson) => {
   return lesson
 }
 
+// Get all lessons from the database
+const getAllLessonsFromDatabase = async () => {
+  const lessons = await Lesson.find()
+  return lessons
+}
+
 // Update an existing lesson in the database
 const updateLessonIntoDatabase = async (
   lessonId: string,
@@ -27,6 +33,7 @@ const deleteLessonFromDatabase = async (lessonId: string) => {
 
 export const LessonServices = {
   createLessonIntoDatabase,
+  getAllLessonsFromDatabase,
   updateLessonIntoDatabase,
   deleteLessonFromDatabase,
 }

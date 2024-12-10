@@ -15,6 +15,9 @@ router.post(
   LessonControllers.createLesson,
 )
 
+// Route to get all lessons
+router.get('/lesson', LessonControllers.getAllLessons)
+
 // Route to update an existing lesson
 router.patch(
   '/lesson/:id',
