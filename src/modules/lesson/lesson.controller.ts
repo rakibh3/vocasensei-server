@@ -30,7 +30,21 @@ const updateLesson = catchAsync(async (req, res) => {
   })
 })
 
+// Delete an existing lesson
+const deleteLesson = catchAsync(async (req, res) => {
+  const { id } = req.params
+  const result = await LessonServices.deleteLessonFromDatabase(id)
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Lesson deleted successfully',
+    data: result,
+  })
+})
+
 export const LessonControllers = {
   createLesson,
   updateLesson,
+  deleteLesson,
 }

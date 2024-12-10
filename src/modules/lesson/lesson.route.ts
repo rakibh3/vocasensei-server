@@ -22,4 +22,7 @@ router.patch(
   LessonControllers.updateLesson,
 )
 
+// Route to delete an existing lesson
+router.delete('/lesson/:id', LessonControllers.deleteLesson)
+
 export const LessonRoute = router

@@ -19,7 +19,14 @@ const updateLessonIntoDatabase = async (
   return lesson
 }
 
+// Delete an existing lesson from the database
+const deleteLessonFromDatabase = async (lessonId: string) => {
+  const result = await Lesson.findByIdAndDelete(lessonId)
+  return result
+}
+
 export const LessonServices = {
   createLessonIntoDatabase,
   updateLessonIntoDatabase,
+  deleteLessonFromDatabase,
 }
