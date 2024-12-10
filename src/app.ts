@@ -29,7 +29,7 @@ const getRootController = (req: Request, res: Response) => {
 }
 
 // Use the router
-app.use(router)
+app.use('/api', router)
 
 // Route handler for /
 app.get('/', getRootController)
