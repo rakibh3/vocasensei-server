@@ -20,7 +20,7 @@ const updateUserRoleInDatabase = async (id: string, role: string) => {
     { _id: id },
     { role },
     { new: true, runValidators: true },
-  )
+  ).select('-password')
   return result
 }
 

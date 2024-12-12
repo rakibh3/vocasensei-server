@@ -16,15 +16,31 @@ router.post(
 )
 
 // Route to get all vocabularies
-router.get('/vocabularies', VocabularyControllers.getAllVocabularies)
+router.get(
+  '/vocabularies',
+  auth(USER_ROLE.admin),
+  VocabularyControllers.getAllVocabularies,
+)
 
 // Route to get a single vocabulary by lesson number
-router.get('/vocabulary/:lessonNo', VocabularyControllers.getVocabulary)
+router.get(
+  '/vocabulary/:lessonNo',
+  auth(USER_ROLE.admin, USER_ROLE.user),
+  VocabularyControllers.getVocabulary,
+)
 
 // Route to update a single vocabulary by id
-router.patch('/vocabulary/edit/:id', VocabularyControllers.updateVocabulary)
+router.patch(
+  '/vocabulary/edit/:id',
+  auth(USER_ROLE.admin),
+  VocabularyControllers.updateVocabulary,
+)
 
 // Route to delete a single vocabulary by id
-router.delete('/vocabulary/delete/:id', VocabularyControllers.deleteVocabulary)
+router.delete(
+  '/vocabulary/delete/:id',
+  auth(USER_ROLE.admin),
+  VocabularyControllers.deleteVocabulary,
+)
 
 export const VocabularyRoute = router

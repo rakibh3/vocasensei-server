@@ -22,6 +22,7 @@ const vocabularySchema = new Schema<TVocabulary>(
     lessonNo: {
       type: Number,
       required: true,
+      ref: 'Lesson',
     },
     adminEmail: {
       type: Schema.Types.ObjectId,

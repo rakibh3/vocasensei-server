@@ -5,6 +5,8 @@ import {
   userValidationSchema,
 } from './user.validation'
 import { UserControllers } from './user.controller'
+import auth from '@/middlewares/auth'
+import { USER_ROLE } from './user.constant'
 
 const router = express.Router()
 
@@ -16,11 +18,12 @@ router.post(
 )
 
 // Route to get all users
-router.get('/users', UserControllers.getAllUsers)
+router.get('/users', auth(USER_ROLE.admin), UserControllers.getAllUsers)
 
 // Route to update user role
 router.patch(
   '/user/:id',
+  auth(USER_ROLE.admin),
   validateRequest(userRoleUpdateValidationSchema),
   UserControllers.updateUserRole,
 )
