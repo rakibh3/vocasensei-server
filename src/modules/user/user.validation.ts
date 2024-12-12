@@ -4,7 +4,7 @@ export const userValidationSchema = z.object({
   name: z
     .string()
     .min(1, 'Name is required')
-    .regex(/^[a-zA-Z0-9_-]+$/, 'Name must be alphanumeric'),
+    .regex(/^[a-zA-Z]+$/, 'Name must be alphabetic'),
 
   photo: z.string().url('Invalid photo URL').optional(),
 

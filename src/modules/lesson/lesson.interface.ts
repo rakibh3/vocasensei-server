@@ -1,4 +1,4 @@
 export type TLesson = {
-  name: string
+  lessonName: string
   lessonNumber: number
 }

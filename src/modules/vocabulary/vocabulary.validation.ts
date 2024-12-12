@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+// import mongoose from 'mongoose'
 import * as z from 'zod'
 
 export const vocabularyCreateValidationSchema = z.object({
@@ -27,9 +27,9 @@ export const vocabularyCreateValidationSchema = z.object({
     .int({ message: 'Lesson number must be an integer' })
     .positive({ message: 'Lesson number must be a positive number' }),
 
-  adminEmail: z.string().refine((val) => {
-    return mongoose.Types.ObjectId.isValid(val)
-  }),
+  // adminEmail: z.string().refine((val) => {
+  //   return mongoose.Types.ObjectId.isValid(val)
+  // }),
 })
 
 export const vocabularyUpdateValidationSchema =

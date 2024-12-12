@@ -3,6 +3,7 @@ import { USER_ROLE } from './user.constant'
 import { Model } from 'mongoose'
 
 export type TUser = {
+  _id: string
   name: string
   email: string
   photo: string

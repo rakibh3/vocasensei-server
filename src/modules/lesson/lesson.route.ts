@@ -10,25 +10,25 @@ const router = express.Router()
 
 // Route to create a new lesson
 router.post(
-  '/lesson',
+  '/lesson/create',
   validateRequest(lessonCreateValidationSchema),
   LessonControllers.createLesson,
 )
 
 // Route to get all lessons
-router.get('/lesson', LessonControllers.getAllLessons)
+router.get('/lessons', LessonControllers.getAllLessons)
 
 // Route to get a single lesson
 router.get('/lesson/:lessonNumber', LessonControllers.getLesson)
 
 // Route to update an existing lesson
 router.patch(
-  '/lesson/:id',
+  '/lesson/edit/:id',
   validateRequest(lessonUpdateValidationSchema),
   LessonControllers.updateLesson,
 )
 
 // Route to delete an existing lesson
-router.delete('/lesson/:id', LessonControllers.deleteLesson)
+router.delete('/lesson/delete/:id', LessonControllers.deleteLesson)
 
 export const LessonRoute = router

@@ -2,7 +2,7 @@
 import { z } from 'zod'
 
 export const lessonCreateValidationSchema = z.object({
-  name: z
+  lessonName: z
     .string({ message: 'Lesson name is required' })
     .max(255, { message: 'Lesson name must not exceed 255 characters' }),
   lessonNumber: z

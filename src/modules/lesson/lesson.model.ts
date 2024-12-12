@@ -3,7 +3,7 @@ import { TLesson } from './lesson.interface'
 
 const lessonSchema = new Schema<TLesson>(
   {
-    name: {
+    lessonName: {
       type: String,
       required: true,
     },

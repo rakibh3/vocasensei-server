@@ -5,9 +5,13 @@ import { VocabularyServices } from './vocabulary.service'
 
 // Create a new vocabulary
 const createVocabulary = catchAsync(async (req, res) => {
+  const { id } = req.user
   const { ...payload } = req.body
 
-  const result = await VocabularyServices.createVocabularyIntoDatabase(payload)
+  const result = await VocabularyServices.createVocabularyIntoDatabase(
+    id,
+    payload,
+  )
 
   sendResponse(res, {
     success: true,

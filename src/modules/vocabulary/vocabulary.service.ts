@@ -2,8 +2,12 @@ import { TVocabulary } from './vocabulary.interface'
 import { Vocabulary } from './vocabulary.model'
 
 // Create a new vocabulary in the database
-const createVocabularyIntoDatabase = async (payload: TVocabulary) => {
-  const vocabulary = await Vocabulary.create(payload)
+const createVocabularyIntoDatabase = async (
+  id: string,
+  payload: TVocabulary,
+) => {
+  const vocabulary = await Vocabulary.create({ ...payload, adminEmail: id })
+
   return vocabulary
 }
 
