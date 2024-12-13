@@ -62,7 +62,7 @@ const deleteTutorial = catchAsync(async (req, res) => {
 
   sendResponse(res, {
     success: true,
-    statusCode: httpStatus.NO_CONTENT,
+    statusCode: httpStatus.OK,
     message: 'Tutorial deleted successfully',
     data: result,
   })
