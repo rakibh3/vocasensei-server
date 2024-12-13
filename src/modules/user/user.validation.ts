@@ -1,10 +1,7 @@
 import { z } from 'zod'
 
 export const userValidationSchema = z.object({
-  name: z
-    .string()
-    .min(1, 'Name is required')
-    .regex(/^[a-zA-Z]+$/, 'Name must be alphabetic'),
+  name: z.string().min(2, 'Name is required'),
 
   photo: z.string().url('Invalid photo URL').optional(),
 

@@ -39,6 +39,7 @@ const loginUser = async (payload: TLoginUser) => {
     id: user._id,
     email: user?.email,
     role: user?.role,
+    name: user?.name,
   }
 
   return {
